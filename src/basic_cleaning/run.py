@@ -43,7 +43,7 @@ def go(args):
 
     #dropping NaNs also dropped the out-of-area location which caused not to assert with sample2.csv
     #commenting out but leaving it for future reference
-    
+
     #logger.info("Dropping NaNs")
 
     #df = df.dropna()
@@ -62,8 +62,10 @@ def go(args):
 
     logger.info(df.count())
 
-    #idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
-    #df = df[idx].copy()
+    #to fix the assertion error happens during boundary check to make sure the property is in NY
+    idx = df['longitude'].between(-74.25, -73.50) & df['latitude'].between(40.5, 41.2)
+
+    df = df[idx].copy()
 
     df.to_csv(args.output_artifact, index=False)
 
