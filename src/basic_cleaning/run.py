@@ -41,12 +41,14 @@ def go(args):
 
     logger.info(df.count())
 
+    #dropping NaNs also dropped the out-of-area location which caused not to assert with sample2.csv
+    #commenting out but leaving it for future reference
+    
+    #logger.info("Dropping NaNs")
 
-    logger.info("Dropping NaNs")
+    #df = df.dropna()
 
-    df = df.dropna()
-
-    logger.info(df.count())
+    #logger.info(df.count())
 
     logger.info("Dropping outliers")
     #min_price = 10
